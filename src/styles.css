@@ -131,7 +131,8 @@
     color-mix(in oklab, var(--surface-2) 70%, transparent),
     color-mix(in oklab, var(--surface-1) 40%, transparent)
   );
-  --gradient-aurora: radial-gradient(
+  --gradient-aurora:
+    radial-gradient(
       60% 60% at 15% 0%,
       color-mix(in oklab, var(--primary) 26%, transparent),
       transparent 70%
@@ -143,7 +144,8 @@
     );
 
   --shadow-elevated: 0 24px 60px -24px oklch(0 0 0 / 0.7);
-  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+  --shadow-glow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
     0 18px 50px -20px color-mix(in oklab, var(--primary) 55%, transparent);
 
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
@@ -212,7 +214,8 @@
 }
 
 @utility surface-grid {
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       to right,
       color-mix(in oklab, var(--foreground) 5%, transparent) 1px,
       transparent 1px
@@ -228,7 +231,9 @@
 @utility ring-focus {
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--ring);
   }
 }
 

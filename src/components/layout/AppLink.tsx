@@ -14,7 +14,6 @@ export function AppLink({ to, ...props }: { to: string } & Omit<LinkComponentPro
   return <Link {...linkProps} />;
 }
 
-
 /** True when the current pathname is `path` or a child of it. */
 export function useIsActivePath(path: string) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });

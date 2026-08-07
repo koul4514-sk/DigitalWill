@@ -50,12 +50,14 @@ export function AppSidebar({
   groups,
   collapsed = false,
   onToggle,
+  onSignOut,
   footer,
   className,
 }: {
   groups: NavGroup[];
   collapsed?: boolean;
   onToggle?: () => void;
+  onSignOut?: () => void;
   footer?: React.ReactNode;
   className?: string;
 }) {
@@ -108,8 +110,9 @@ export function AppSidebar({
         {footer ?? (
           <Button
             variant="ghost"
+            onClick={onSignOut}
             className={cn(
-              "w-full text-sidebar-foreground/75",
+              "w-full text-sidebar-foreground/75 hover:bg-destructive/10 hover:text-destructive transition-colors",
               collapsed ? "justify-center px-0" : "justify-start",
             )}
           >

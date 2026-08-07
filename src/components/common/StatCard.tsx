@@ -23,7 +23,11 @@ export function StatCard({
   className?: string;
 }) {
   const trendClass =
-    trend === "up" ? "text-success" : trend === "down" ? "text-destructive" : "text-muted-foreground";
+    trend === "up"
+      ? "text-success"
+      : trend === "down"
+        ? "text-destructive"
+        : "text-muted-foreground";
 
   return (
     <div

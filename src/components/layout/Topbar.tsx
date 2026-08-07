@@ -1,10 +1,18 @@
-import { Bell, Menu, PanelLeftOpen, Search } from "lucide-react";
-import type { ReactNode } from "react";
+import { Bell, LogOut, Menu, PanelLeftOpen, Search, User } from "lucide-react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
 /**
@@ -17,6 +25,7 @@ export function Topbar({
   collapsed,
   onExpand,
   onOpenMobileNav,
+  onSignOut,
   actions,
 }: {
   roleLabel: string;
@@ -24,14 +33,23 @@ export function Topbar({
   collapsed?: boolean;
   onExpand?: () => void;
   onOpenMobileNav?: () => void;
+  onSignOut?: () => void;
   actions?: ReactNode;
 }) {
-  const initials = userName
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const displayName = mounted && userName ? userName : "User";
+  const initials = displayName
     .split(" ")
     .map((part) => part[0])
+    .filter(Boolean)
     .slice(0, 2)
     .join("")
-    .toUpperCase();
+    .toUpperCase() || "U";
 
   return (
     <header
@@ -80,9 +98,32 @@ export function Topbar({
           <Bell className="size-4.5" />
           <span className="absolute top-2 right-2 size-2 rounded-full bg-primary" />
         </Button>
-        <Avatar className="size-9 border border-border">
-          <AvatarFallback className="bg-surface-2 text-xs font-semibold">{initials}</AvatarFallback>
-        </Avatar>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="relative size-9 rounded-full p-0 border border-border">
+              <Avatar className="size-9">
+                <AvatarFallback className="bg-surface-2 text-xs font-semibold">{initials}</AvatarFallback>
+              </Avatar>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-56 glass border-border">
+            <DropdownMenuLabel>
+              <div className="flex flex-col space-y-1">
+                <p className="text-sm font-medium leading-none">{displayName}</p>
+                <p className="text-xs text-muted-foreground">{roleLabel}</p>
+              </div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={onSignOut}
+              className="text-destructive focus:bg-destructive/10 focus:text-destructive cursor-pointer"
+            >
+              <LogOut className="mr-2 size-4" />
+              <span>Sign out</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   );

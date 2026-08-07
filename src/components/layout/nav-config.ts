@@ -24,12 +24,7 @@ import {
  * a permission are hidden entirely when that permission is off — the UI
  * mirrors what the database policies already enforce.
  */
-export type NomineePermission =
-  | "vault"
-  | "instructions"
-  | "financial"
-  | "checklist"
-  | "timeline";
+export type NomineePermission = "vault" | "instructions" | "financial" | "checklist" | "timeline";
 
 export interface NavItem {
   title: string;
@@ -96,7 +91,12 @@ export const nomineeNav: NavGroup[] = [
         icon: ClipboardCheck,
         permission: "checklist",
       },
-      { title: "Estate Timeline", url: "/nominee/timeline", icon: Activity, permission: "timeline" },
+      {
+        title: "Estate Timeline",
+        url: "/nominee/timeline",
+        icon: Activity,
+        permission: "timeline",
+      },
     ],
   },
   {

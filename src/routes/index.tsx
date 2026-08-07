@@ -88,10 +88,26 @@ const pillars = [
 ];
 
 const steps = [
-  { n: "01", title: "Create your estate", body: "Sign up and set up your private vault in minutes." },
-  { n: "02", title: "Add what matters", body: "Upload documents, register assets, write instructions." },
-  { n: "03", title: "Invite nominees", body: "Send an email invite and choose exactly what each person sees." },
-  { n: "04", title: "Stay in control", body: "Adjust permissions and watch every access in the audit log." },
+  {
+    n: "01",
+    title: "Create your estate",
+    body: "Sign up and set up your private vault in minutes.",
+  },
+  {
+    n: "02",
+    title: "Add what matters",
+    body: "Upload documents, register assets, write instructions.",
+  },
+  {
+    n: "03",
+    title: "Invite nominees",
+    body: "Send an email invite and choose exactly what each person sees.",
+  },
+  {
+    n: "04",
+    title: "Stay in control",
+    body: "Adjust permissions and watch every access in the audit log.",
+  },
 ];
 
 function Landing() {
@@ -144,8 +160,8 @@ function Landing() {
 
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Documents, accounts, policies and passwords are scattered across dozens of
-                platforms. DigitalWill brings them into one encrypted vault — and hands the
-                right pieces to the right people, exactly when it matters.
+                platforms. DigitalWill brings them into one encrypted vault — and hands the right
+                pieces to the right people, exactly when it matters.
               </p>
 
               <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -209,8 +225,8 @@ function Landing() {
 
                 <div className="mt-5 rounded-xl border border-primary/25 bg-primary/8 px-4 py-3">
                   <p className="text-xs text-muted-foreground">
-                    <span className="font-medium text-foreground">Nominee access:</span> Priya S. can
-                    view Vault + Instructions. Financial access is off.
+                    <span className="font-medium text-foreground">Nominee access:</span> Priya S.
+                    can view Vault + Instructions. Financial access is off.
                   </p>
                 </div>
               </div>
