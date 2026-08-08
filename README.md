@@ -1,732 +1,344 @@
-# Digital Legacy Guard
+🛡️ Digital Legacy Guard
+Securely organize, protect, and transfer your digital legacy.
 
-Here's a polished, hackathon-ready project description you can use in your documentation or presentation:
+Digital Legacy Guard is a digital estate management platform designed to help individuals securely organize important documents, digital assets, personal instructions, and other information that may need to be accessed by trusted nominees in the future.
 
-LegacyVault AI is a secure Digital Estate Management platform designed to help individuals organize, protect, and transfer their digital legacy to trusted nominees. In today's digital world, important documents, online accounts, financial records, subscriptions, and digital assets are often scattered across multiple platforms, making them difficult for family members or legal executors to access when needed. LegacyVault AI provides a centralized platform where users can securely store encrypted documents, register one or more nominees, manage digital assets, and define access permissions for each nominee. The platform follows a privacy-first approach by encrypting sensitive information before storage, ensuring that only authorized users can access it. A dedicated nominee portal displays only the resources and permissions granted by the owner, preventing unauthorized access to confidential information. The system includes secure authentication, role-based access control, document management, digital instructions, executor checklists, and audit logs to help nominees carry out the owner's wishes in an organized and transparent manner. By combining modern web technologies with strong cybersecurity principles, LegacyVault AI offers a reliable and user-friendly solution for preserving and securely managing a person's digital legacy.
+As more of our lives move online, important information is increasingly scattered across cloud services, financial platforms, social accounts, subscriptions, personal documents, and digital assets. Digital Legacy Guard provides a centralized place to organize this information and control who can access it.
 
-You are a Senior Software Engineer, Senior Full Stack Developer, Cybersecurity Engineer, UI/UX Designer and System Architect.
+Built as a full-stack web application with a privacy-first approach.
 
-You are my technical co-founder.
+✨ Features
+👤 Owner Dashboard
 
-Your responsibility is to build this project from scratch with production-quality architecture.
+Users can manage their digital estate from a centralized dashboard.
 
-Do NOT generate everything at once.
+Secure user authentication
+Digital estate overview
+Recent activity
+Digital estate health/status overview
+Quick actions
+Profile and security settings
+🔐 Digital Vault
 
-Think before coding.
+A centralized space for important documents and information.
 
-Follow industry best practices.
+Upload and manage documents
+Organize documents by category
+Search and filter documents
+Document metadata
+Secure access controls
 
-Always explain architecture before implementation.
-
-Generate modular, reusable, maintainable code.
-
-====================================================
-
-PROJECT NAME
-
-====================================================
-
-LegacyVault AI
-
-====================================================
-
-PROJECT DESCRIPTION
-
-====================================================
-
-LegacyVault AI is a Digital Estate Management Platform.
-
-The platform allows users to securely organize their digital legacy.
-
-Users can:
-
-• Create a Digital Estate
-
-• Store important digital asset information
-
-• Upload encrypted documents
-
-• Register one or more nominees
-
-• Assign permissions to nominees
-
-• Create digital instructions
-
-• Generate AI-based execution plans (future integration)
-
-The first version will NOT include AI integration.
-
-The focus is on creating a professional Full Stack Web Application.
-
-====================================================
-
-TECH STACK
-
-====================================================
-
-Frontend
-
-React.js
-
-JavaScript
-
-Tailwind CSS
-
-React Router DOM
-
-Axios
-
-Framer Motion
-
-React Hook Form
-
-Lucide React Icons
-
-Backend
-
-Node.js
-
-Express.js
-
-JavaScript
-
-MySQL
-
-JWT Authentication
-
-bcrypt
-
-Multer
-
-Helmet
-
-CORS
-
-dotenv
-
-Morgan
-
-File Upload
-
-Database
-
-MySQL
-
-Storage
-
-Local Storage (development)
-
-Encryption layer prepared for future implementation.
-
-Deployment
-
-Frontend
-
-Vercel
-
-Backend
-
-Render / Railway
-
-Database
-
-MySQL
-
-====================================================
-
-PROJECT STRUCTURE
-
-====================================================
-
-Frontend
-
-client/
-
-src/
-
-components/
-
-pages/
-
-layouts/
-
-hooks/
-
-context/
-
-services/
-
-utils/
-
-assets/
-
-styles/
-
-Backend
-
-server/
-
-controllers/
-
-routes/
-
-middleware/
-
-models/
-
-config/
-
-services/
-
-uploads/
-
-utils/
-
-database/
-
-====================================================
-
-DESIGN STYLE
-
-====================================================
-
-Professional
-
-Modern
-
-Dark Theme
-
-Apple Inspired
-
-Glassmorphism
-
-Blue Accent
-
-Responsive
-
-Minimal
-
-Premium Dashboard
-
-Smooth animations
-
-====================================================
-
-ROLES
-
-====================================================
-
-Owner
-
-Nominee
-
-====================================================
-
-OWNER FEATURES
-
-====================================================
-
-Authentication
-
-Signup
-
-Login
-
-Logout
-
-Forgot Password
-
-Dashboard
-
-View Estate Summary
-
-View Nominee Status
-
-Recent Activity
-
-Digital Health Score
-
-Quick Actions
-
-Digital Vault
-
-Upload Documents
-
-View Documents
-
-Search Documents
-
-Filter Documents
-
-Delete Documents
-
-Document Categories
-
-Insurance
+Supported categories include:
 
 Identity
-
-Property
-
-Medical
-
-Legal
-
 Financial
-
-Digital Assets
-
-Add Asset
-
-Edit Asset
-
-Delete Asset
-
-Asset Categories
-
-Subscriptions
-
-Social Accounts
-
-Developer Accounts
-
-Cloud Storage
-
-Financial Accounts
-
+Legal
+Medical
 Insurance
-
 Property
+Other important records
+💻 Digital Assets
 
-Nominee Management
+Keep track of important online and digital assets.
 
-Add Nominee
+Examples include:
 
-Edit Nominee
+Social media accounts
+Developer accounts
+Cloud storage
+Subscriptions
+Financial accounts
+Insurance
+Digital services
 
-Delete Nominee
+Users can add, update, categorize, and manage their digital assets.
 
-Grant Permissions
+👥 Nominee Management
 
-Permission Toggles
+Users can designate trusted nominees who may need access to selected information.
 
-Encrypted Vault
+Add nominees
+Edit nominee information
+Remove nominees
+Define access permissions
+Control which areas a nominee can access
 
-Digital Instructions
+The permission model is designed so that nominees only receive the access explicitly granted to them.
 
-Financial Overview
+📜 Digital Instructions
 
-Executor Checklist
+Users can create instructions for their nominees or executors.
 
-Settings
+Instructions can contain:
 
-Profile
+Title
+Description
+Priority
+Important actions
+Additional information
 
-Security
+This helps ensure that important wishes and procedures are documented rather than relying entirely on memory or verbal instructions.
 
-Notifications
+✅ Executor Checklist
 
-Appearance
+A structured checklist helps nominees organize the actions they may need to take when executing the owner's instructions.
 
-====================================================
+📊 Estate Overview
 
-NOMINEE FEATURES
+The dashboard provides an overview of the digital estate, including relevant assets, nominees, activity, and completion/status indicators.
 
-====================================================
+🔑 Access Control
 
-Separate Login
-
-OTP Placeholder
-
-Dashboard
-
-Only display permissions granted by owner.
-
-Nominee can NEVER edit owner data.
-
-Pages
-
-Dashboard
-
-My Access
-
-Encrypted Vault
-
-Digital Instructions
-
-Financial Overview
-
-Executor Checklist
-
-Estate Timeline
-
-Security
-
-Permissions should dynamically control visible pages.
-
-If owner disables Financial Access
-
-Nominee should never see Financial Overview.
-
-Hide the navigation completely.
-
-====================================================
-
-AUTHENTICATION
-
-====================================================
-
-Use JWT Authentication.
-
-Passwords must be hashed using bcrypt.
-
-Implement
-
-Signup
-
-Login
-
-Logout
-
-Protected Routes
-
-Role Based Access
+Digital Legacy Guard is designed around two primary roles:
 
 Owner
 
+The owner has complete control over their digital estate.
+
+They can:
+
+Manage documents
+Manage digital assets
+Manage nominees
+Configure permissions
+Create instructions
+Review estate information
+Manage account/security settings
 Nominee
 
-Store JWT securely.
-
-====================================================
-
-DATABASE
-
-====================================================
-
-Create MySQL Schema.
-
-Tables
-
-users
-
-id
-
-full_name
-
-email
-
-password
-
-phone
-
-role
-
-created_at
-
-nominees
-
-id
-
-owner_id
-
-nominee_name
-
-email
-
-phone
-
-relationship
-
-permissions_json
-
-documents
-
-id
-
-owner_id
-
-file_name
-
-file_path
-
-category
-
-uploaded_at
-
-digital_assets
-
-id
-
-owner_id
-
-asset_name
-
-category
-
-status
-
-digital_instructions
-
-id
-
-owner_id
-
-title
-
-description
-
-priority
-
-audit_logs
-
-id
-
-user_id
-
-action
-
-created_at
-
-====================================================
-
-API ENDPOINTS
-
-====================================================
-
-Authentication
-
-POST /api/auth/signup
-
-POST /api/auth/login
-
-POST /api/auth/logout
-
-Owner
-
-GET /api/dashboard
-
-POST /api/assets
-
-PUT /api/assets/:id
-
-DELETE /api/assets/:id
-
-GET /api/assets
-
-POST /api/documents
-
-DELETE /api/documents/:id
-
-GET /api/documents
-
-POST /api/nominees
-
-PUT /api/nominees/:id
-
-DELETE /api/nominees/:id
-
-GET /api/nominees
-
-Nominee
-
-GET /api/nominee/dashboard
-
-GET /api/nominee/access
-
-GET /api/nominee/instructions
-
-GET /api/nominee/checklist
-
-====================================================
-
-SECURITY
-
-====================================================
-
-Use Helmet.
-
-Use CORS.
-
-Validate every request.
-
-Use Express Validator.
-
-Hash passwords using bcrypt.
-
-Sanitize inputs.
-
-Rate limit authentication.
-
-Store environment variables in .env.
-
-Never expose secrets.
-
-Prepare architecture for future AES Encryption.
-
-====================================================
-
-UI REQUIREMENTS
-
-====================================================
-
-Use reusable components.
-
-Sidebar
-
-Navbar
-
-Cards
-
-Buttons
-
-Inputs
-
-Tables
-
-Dialogs
-
-Modals
-
-Empty States
-
-Loading Skeletons
-
-Responsive Design
-
-Maintain consistent spacing.
-
-====================================================
-
-ROUTING
-
-====================================================
-
-/
-
-/login
-
-/signup
-
-/dashboard
-
-/vault
-
-/assets
-
-/nominees
-
-/instructions
-
-/settings
-
-Nominee
-
-/nominee/login
-
-/nominee/dashboard
-
-/nominee/access
-
-/nominee/vault
-
-/nominee/instructions
-
-/nominee/checklist
-
-/nominee/security
-
-====================================================
-
-WORKFLOW
-
-====================================================
-
-DO NOT generate everything together.
-
-Build step-by-step.
-
-Phase 1
-
-Project Structure
-
-Phase 2
-
-React Frontend
-
-Phase 3
-
-Express Backend
-
-Phase 4
-
-MySQL Database
-
-Phase 5
-
-Authentication
-
-Phase 6
-
-CRUD APIs
-
-Phase 7
-
-Frontend Integration
-
-Phase 8
-
-Testing
-
-====================================================
-
-IMPORTANT
-
-====================================================
-
-Do not skip architecture.
-
-Before generating code:
-
-Explain why each folder exists.
-
-Explain why each package is used.
-
-Explain every API.
-
-Explain every database table.
-
-Explain every React component.
-
-Explain every Express middleware.
-
-After each module:
-
-Wait for my confirmation before continuing.
-
-Act like a Senior Software Architect mentoring a junior developer.
-
-Do not move to the next phase until I approve the current one.
-
-Generate production-quality code only.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/c39ba82e-1f46-4cd2-a28d-d5418823fb99).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+A nominee receives only the permissions granted by the owner.
+
+The nominee:
+
+Cannot modify the owner's estate
+Cannot access restricted information
+Only sees permitted sections
+Can access assigned instructions and resources
+
+For example, if financial access is disabled for a nominee, the financial section should not be exposed to that nominee.
+
+🏗️ Technology Stack
+Frontend
+React 19
+TypeScript
+Vite
+TanStack Router
+TanStack React Query
+Tailwind CSS
+Radix UI
+React Hook Form
+Zod
+Lucide React
+Recharts
+Sonner
+Backend / Services
+
+The current project includes infrastructure for:
+
+Node.js
+Express 5
+MySQL
+mysql2
+Nodemailer
+bcryptjs
+Helmet
+CORS
+Rate limiting
+Development
+ESLint
+Prettier
+TypeScript
+Vite
+Lovable development integration
+
+The dependency configuration in the current repository confirms the React 19, TypeScript, Vite, Tailwind, TanStack, Express, MySQL, authentication/security, email, and validation tooling.
+
+🧩 Architecture
+
+The application is structured as a modular web application with reusable UI components, routing, state/data management, validation, and backend/service integrations.
+
+High-level architecture:
+
+┌──────────────────────────────────────┐
+│              Frontend                │
+│                                      │
+│ React + TypeScript + Vite            │
+│ TanStack Router + React Query        │
+│ Tailwind CSS + Radix UI              │
+└──────────────────┬───────────────────┘
+                   │
+                   │ API / Service Layer
+                   ▼
+┌──────────────────────────────────────┐
+│             Application              │
+│                                      │
+│ Authentication                       │
+│ Authorization / Permissions           │
+│ Validation                           │
+│ Document Management                  │
+│ Digital Assets                       │
+│ Nominee Management                   │
+│ Digital Instructions                 │
+└──────────────────┬───────────────────┘
+                   │
+                   ▼
+┌──────────────────────────────────────┐
+│             Data Layer               │
+│                                      │
+│ MySQL                                │
+│ File / Document Storage              │
+│ Email Services                       │
+│ Audit / Activity Data                │
+└──────────────────────────────────────┘
+📁 Project Structure
+DigitalWill/
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── layouts/
+│   ├── hooks/
+│   ├── context/
+│   ├── services/
+│   ├── utils/
+│   ├── assets/
+│   └── styles/
+│
+├── .lovable/
+├── package.json
+├── package-lock.json
+├── vite.config.ts
+├── tsconfig.json
+├── eslint.config.js
+├── components.json
+└── README.md
+🚀 Getting Started
+Prerequisites
+
+Make sure you have installed:
+
+Node.js
+npm
+Clone the repository
+git clone https://github.com/koul4514-sk/DigitalWill.git
+cd DigitalWill
+Install dependencies
+npm install
+Start the development server
 npm run dev
-```
+
+The Vite development server will provide the local URL in your terminal.
+
+🛠️ Available Scripts
+Command	Description
+npm run dev	Start development server
+npm run build	Create production build
+npm run build:dev	Create development-mode build
+npm run preview	Preview production build
+npm run lint	Run ESLint
+npm run format	Format the project with Prettier
+
+These scripts correspond to the current package.json.
+
+🔒 Security
+
+Digital Legacy Guard handles potentially sensitive personal and digital-estate information, so security is a core design consideration.
+
+The project includes tooling for:
+
+Password hashing
+Authentication
+Authorization
+Role-based access
+Request validation
+Input validation
+CORS configuration
+HTTP security headers
+Rate limiting
+Environment-based configuration
+Controlled nominee permissions
+⚠️ Important
+
+This project is currently a development/hackathon application.
+
+Do not treat the current implementation as a production-grade digital estate or legal-will system without independently auditing:
+
+Encryption at rest
+Key management
+Authentication flows
+Authorization boundaries
+File-storage security
+Database security
+Backup and recovery
+Audit logging
+Account recovery
+Email security
+Data retention/deletion
+Legal requirements surrounding wills and inheritance
+
+Security claims should only be made for mechanisms that are actually implemented and tested.
+
+🔮 Future Improvements
+
+Planned or potential improvements include:
+
+End-to-end encryption for sensitive information
+Stronger document encryption and key management
+Multi-factor authentication
+OTP-based nominee verification
+Advanced audit logs
+Automated estate health checks
+Secure cloud document storage
+Scheduled reminders
+Emergency access workflows
+Dead-man-switch style activation mechanisms
+Multi-nominee approval workflows
+Legal-document integrations
+AI-assisted estate organization and execution planning
+AI Integration
+
+AI-assisted execution planning is considered a future feature.
+
+The current application does not rely on AI for its core functionality.
+
+🎯 Project Goals
+
+Digital Legacy Guard aims to solve a simple but increasingly important problem:
+
+What happens to your digital life when you can no longer manage it yourself?
+
+The project focuses on three principles:
+
+1. Organization
+Bring important digital information into one structured system.
+
+2. Control
+Give the owner explicit control over what each nominee can access.
+
+3. Continuity
+Make important instructions and digital assets easier for trusted people to manage when necessary.
+
+🤝 Contributing
+
+Contributions, ideas, bug reports, and improvements are welcome.
+
+If you find a bug or have an idea for a feature:
+
+Open an issue.
+Describe the problem or proposed improvement.
+Provide reproduction steps where applicable.
+Submit a pull request for approved changes.
+📄 License
+
+License information will be added as the project is finalized.
+
+👨‍💻 Project
+
+Digital Legacy Guard
+
+A privacy-focused digital estate management platform for organizing digital assets, documents, nominees, and post-access instructions.
+
+Repository:
+https://github.com/koul4514-sk/DigitalWill
