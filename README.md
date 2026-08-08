@@ -154,82 +154,45 @@ Lovable development integration
 The dependency configuration in the current repository confirms the React 19, TypeScript, Vite, Tailwind, TanStack, Express, MySQL, authentication/security, email, and validation tooling.
 
 🧩 Architecture
+LegacyVault is structured as a modular full-stack web application with reusable UI components, routing, state management, backend services, authentication, authorization, document management, and database integration.
 
-The application is structured as a modular web application with reusable UI components, routing, state/data management, validation, and backend/service integrations.
+High-Level Architecture
 
-High-level architecture:
+Frontend
 
-┌──────────────────────────────────────┐
-│              Frontend                │
-│                                      │
-│ React + TypeScript + Vite            │
-│ TanStack Router + React Query        │
-│ Tailwind CSS + Radix UI              │
-└──────────────────┬───────────────────┘
-                   │
-                   │ API / Service Layer
-                   ▼
-┌──────────────────────────────────────┐
-│             Application              │
-│                                      │
-│ Authentication                       │
-│ Authorization / Permissions           │
-│ Validation                           │
-│ Document Management                  │
-│ Digital Assets                       │
-│ Nominee Management                   │
-│ Digital Instructions                 │
-└──────────────────┬───────────────────┘
-                   │
-                   ▼
-┌──────────────────────────────────────┐
-│             Data Layer               │
-│                                      │
-│ MySQL                                │
-│ File / Document Storage              │
-│ Email Services                       │
-│ Audit / Activity Data                │
-└──────────────────────────────────────┘
-📁 Project Structure
-DigitalWill/
-│
-├── public/
-│
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── layouts/
-│   ├── hooks/
-│   ├── context/
-│   ├── services/
-│   ├── utils/
-│   ├── assets/
-│   └── styles/
-│
-├── .lovable/
-├── package.json
-├── package-lock.json
-├── vite.config.ts
-├── tsconfig.json
-├── eslint.config.js
-├── components.json
-└── README.md
-🚀 Getting Started
-Prerequisites
+React
+TypeScript
+Vite
+TanStack Router
+React Query
+Tailwind CSS
+Radix UI
+Framer Motion
 
-Make sure you have installed:
+↓
+
+Application Layer
+
+Authentication
+Authorization & Permissions
+User Management
+Document Management
+Digital Asset Management
+Nominee Management
+Digital Instructions
+Executor Tasks
+Activity & Audit Management
+
+↓
+
+Backend & Data Layer
 
 Node.js
-npm
-Clone the repository
-git clone https://github.com/koul4514-sk/DigitalWill.git
-cd DigitalWill
-Install dependencies
-npm install
-Start the development server
-npm run dev
+Express.js
+MySQL
+File/Document Storage
+Audit & Activity Data
 
-The Vite development server will provide the local URL in your terminal.
 
 🛠️ Available Scripts
 Command	Description
