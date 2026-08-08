@@ -49,6 +49,99 @@ export interface AuditEvent {
   summary: string;
 }
 
+export interface WalletAttachment {
+  id: string;
+  activityId: string;
+  type: "file" | "link";
+  fileName: string;
+  fileUrl: string;
+  mimeType: string;
+  fileSize: number;
+  createdAt?: string;
+  createdBy?: string;
+}
+
+export interface WalletActivity {
+  id: string;
+  title: string;
+  activityType: string;
+  status: "Completed" | "Pending" | "Under Review" | "Rejected" | string;
+  role: "Owner" | "Nominee" | string;
+  amount?: string;
+  currencyToken?: string;
+  network?: string;
+  senderWallet?: string;
+  receiverWallet?: string;
+  txHash?: string;
+  blockNumber?: number;
+  contractAddress?: string;
+  reviewerName?: string;
+  reviewStatus?: string;
+  rating?: number;
+  reputationScore?: number;
+  reviewComment?: string;
+  description?: string;
+  createdBy: string;
+  createdAt: string;
+  completedAt?: string;
+  attachment?: WalletAttachment | null;
+}
+
+export interface ActivityCounts {
+  totalCount: number;
+  filteredCount: number;
+  roleCounts: { owner: number; nominee: number };
+  statusCounts: { completed: number; pending: number; under_review: number; rejected: number };
+}
+
+export interface TrustReceiptPayload {
+  header: {
+    projectName: string;
+    documentTitle: string;
+    receiptId: string;
+    generatedDate: string;
+    generatedTimestamp: string;
+  };
+  activity: {
+    id: string;
+    title: string;
+    activityType: string;
+    description: string;
+    status: string;
+    createdAt: string;
+    completionDate: string;
+  };
+  parties: {
+    senderWallet: string;
+    receiverWallet: string;
+    contractAddress: string;
+    createdBy: string;
+    partyRole: string;
+  };
+  blockchain: {
+    amount: string;
+    token: string;
+    network: string;
+    txHash: string;
+    blockNumber: string;
+    contractAddress: string;
+  };
+  statusHistory: Array<{ step: string; timestamp: string }>;
+  review: {
+    reviewerName: string;
+    reviewStatus: string;
+    rating: string;
+    reputationScore: string;
+    reviewComment: string;
+  };
+  evidence: {
+    attached: boolean;
+    fileName: string;
+    type: string;
+    reference: string;
+  };
+}
+
 export interface EstateSettings {
   autoLock: boolean;
   requireReview: boolean;
@@ -260,7 +353,7 @@ export function resetEstateState() {
 
 export function subscribeToStateChanges(callback: (state: EstateState) => void) {
   if (typeof window === "undefined") return () => {};
-  
+
   // Initial sync from MySQL DB
   fetchStateFromDb().then((dbState) => {
     if (dbState) {
@@ -489,7 +582,9 @@ export function deleteAssetRecord(id: string): EstateState {
 }
 
 // Real-Time Nominee Operations
-export function addNomineeRecord(nominee: Omit<NomineeRecord, "id" | "status"> & { password?: string }): EstateState {
+export function addNomineeRecord(
+  nominee: Omit<NomineeRecord, "id" | "status"> & { password?: string },
+): EstateState {
   const currentState = getEstateState();
   const newNominee: NomineeRecord = {
     name: nominee.name,
@@ -718,4 +813,159 @@ export function saveSessionState(state: SessionState) {
 export function clearSessionState() {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(SESSION_KEY);
+}
+
+function getAuthHeaders(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const token = localStorage.getItem("legacyvault-jwt");
+  if (token) {
+    return { Authorization: `Bearer ${token}` };
+  }
+  const session = getSessionState();
+  const nomineeToken = (session as { token?: string } | null)?.token;
+  if (session?.role === "nominee" && nomineeToken) {
+    return { Authorization: `Bearer ${nomineeToken}` };
+  }
+  return { Authorization: "Bearer owner-demo-token" };
+}
+
+// Real-Time API Helper Functions for Wallet Activities (Bounties 1, 2, 3)
+export async function fetchWalletActivities(params?: {
+  role?: string;
+  status?: string;
+  search?: string;
+}): Promise<{ activities: WalletActivity[]; counts: ActivityCounts }> {
+  if (typeof window === "undefined") {
+    return {
+      activities: [],
+      counts: {
+        totalCount: 0,
+        filteredCount: 0,
+        roleCounts: { owner: 0, nominee: 0 },
+        statusCounts: { completed: 0, pending: 0, under_review: 0, rejected: 0 },
+      },
+    };
+  }
+
+  const query = new URLSearchParams();
+  if (params?.role) query.set("role", params.role);
+  if (params?.status) query.set("status", params.status);
+  if (params?.search) query.set("search", params.search);
+
+  try {
+    const res = await fetch(`/api/wallet-activities?${query.toString()}`, {
+      headers: getAuthHeaders(),
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to fetch wallet activities (${res.status})`);
+    }
+    const data = await res.json();
+    return {
+      activities: data.activities || [],
+      counts: data.counts || {
+        totalCount: 0,
+        filteredCount: 0,
+        roleCounts: { owner: 0, nominee: 0 },
+        statusCounts: { completed: 0, pending: 0, under_review: 0, rejected: 0 },
+      },
+    };
+  } catch (err) {
+    console.error("fetchWalletActivities error:", err);
+    return {
+      activities: [],
+      counts: {
+        totalCount: 0,
+        filteredCount: 0,
+        roleCounts: { owner: 0, nominee: 0 },
+        statusCounts: { completed: 0, pending: 0, under_review: 0, rejected: 0 },
+      },
+    };
+  }
+}
+
+export async function fetchWalletActivityDetail(id: string): Promise<WalletActivity | null> {
+  if (typeof window === "undefined") return null;
+  try {
+    const res = await fetch(`/api/wallet-activities/${encodeURIComponent(id)}`, {
+      headers: getAuthHeaders(),
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.activity || null;
+  } catch (err) {
+    console.error("fetchWalletActivityDetail error:", err);
+    return null;
+  }
+}
+
+export async function attachActivityEvidence(
+  activityId: string,
+  payload: {
+    type: "file" | "link";
+    fileName?: string;
+    fileUrl?: string;
+    mimeType?: string;
+    fileSize?: number;
+    fileData?: string;
+    createdBy?: string;
+  },
+): Promise<{ ok: boolean; attachment?: WalletAttachment; error?: string }> {
+  if (typeof window === "undefined") return { ok: false, error: "SSR environment" };
+  try {
+    const res = await fetch(`/api/wallet-activities/${encodeURIComponent(activityId)}/attachment`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...getAuthHeaders() },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      return { ok: false, error: data.error || "Failed attaching evidence" };
+    }
+    return { ok: true, attachment: data.attachment };
+  } catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : "Network request failed";
+    return { ok: false, error: errorMsg };
+  }
+}
+
+export async function deleteActivityEvidence(
+  activityId: string,
+): Promise<{ ok: boolean; error?: string }> {
+  if (typeof window === "undefined") return { ok: false };
+  try {
+    const res = await fetch(`/api/wallet-activities/${encodeURIComponent(activityId)}/attachment`, {
+      method: "DELETE",
+      headers: getAuthHeaders(),
+    });
+    if (!res.ok) {
+      const data = await res.json();
+      return { ok: false, error: data.error || "Failed removing evidence" };
+    }
+    return { ok: true };
+  } catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : "Network request failed";
+    return { ok: false, error: errorMsg };
+  }
+}
+
+export async function fetchTrustReceipt(
+  activityId: string,
+): Promise<{ ok: boolean; receipt?: TrustReceiptPayload; error?: string }> {
+  if (typeof window === "undefined") return { ok: false, error: "SSR environment" };
+  try {
+    const res = await fetch(
+      `/api/wallet-activities/${encodeURIComponent(activityId)}/trust-receipt`,
+      {
+        headers: getAuthHeaders(),
+      },
+    );
+    const data = await res.json();
+    if (!res.ok) {
+      return { ok: false, error: data.error || "Trust Receipt unavailable" };
+    }
+    return { ok: true, receipt: data.receipt };
+  } catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : "Network error fetching trust receipt";
+    return { ok: false, error: errorMsg };
+  }
 }

@@ -202,7 +202,8 @@ function SettingsPage() {
           <div>
             <p className="text-sm font-medium text-foreground">Export Full Digital Will Backup</p>
             <p className="text-xs text-muted-foreground">
-              Download a complete JSON snapshot of all real-time documents, assets, instructions, checklist items, nominees, and audit logs stored in your MySQL database.
+              Download a complete JSON snapshot of all real-time documents, assets, instructions,
+              checklist items, nominees, and audit logs stored in your MySQL database.
             </p>
           </div>
           <Button

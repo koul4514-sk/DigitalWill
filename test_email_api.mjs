@@ -7,7 +7,7 @@ async function testBrevoEmail() {
     const response = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
-        "accept": "application/json",
+        accept: "application/json",
         "content-type": "application/json",
         "api-key": process.env.BREVO_API_KEY || "xkeysib-test-key",
       },
@@ -15,8 +15,9 @@ async function testBrevoEmail() {
         sender: { name: "DigitalWill Security", email: "no-reply@digitalwill.ai" },
         to: [{ email: recipient, name: "Saksham" }],
         subject: "Your DigitalWill Nominee 2FA Verification Code",
-        htmlContent: "<h1>DigitalWill Verification Code: 994821</h1><p>This is your real 2FA code delivered to your Gmail inbox.</p>"
-      })
+        htmlContent:
+          "<h1>DigitalWill Verification Code: 994821</h1><p>This is your real 2FA code delivered to your Gmail inbox.</p>",
+      }),
     });
 
     const result = await response.json();

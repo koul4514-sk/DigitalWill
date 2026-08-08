@@ -62,7 +62,10 @@ function NomineeLoginPage() {
       if (data.previewUrl) setPreviewUrl(data.previewUrl);
 
       if (data.deliveredToGmail) {
-        toast.success(`Verification code delivered directly to your Gmail inbox (${email.trim()})!`, { duration: 10000 });
+        toast.success(
+          `Verification code delivered directly to your Gmail inbox (${email.trim()})!`,
+          { duration: 10000 },
+        );
       } else {
         toast.success(`Verification code: ${data.code} (Sent to ${email.trim()})`, {
           action: data.previewUrl
@@ -172,7 +175,8 @@ function NomineeLoginPage() {
           </Link>
           <CardTitle className="text-xl">Nominee Portal Access</CardTitle>
           <p className="text-sm text-muted-foreground">
-            Sign in as a trusted nominee using your assigned Access Token or Email Verification Code.
+            Sign in as a trusted nominee using your assigned Access Token or Email Verification
+            Code.
           </p>
         </CardHeader>
         <CardContent>
@@ -181,7 +185,9 @@ function NomineeLoginPage() {
             <button
               type="button"
               className={`rounded-lg py-2 transition-all ${
-                !otpMode ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
+                !otpMode
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
               onClick={() => {
                 setOtpMode(false);
@@ -192,7 +198,9 @@ function NomineeLoginPage() {
             <button
               type="button"
               className={`rounded-lg py-2 transition-all ${
-                otpMode ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
+                otpMode
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
               onClick={() => {
                 setOtpMode(true);
@@ -240,8 +248,8 @@ function NomineeLoginPage() {
                     {sendingOtp
                       ? "Sending..."
                       : otpCooldown > 0
-                      ? `Resend in ${otpCooldown}s`
-                      : "Send Code to Email"}
+                        ? `Resend in ${otpCooldown}s`
+                        : "Send Code to Email"}
                   </button>
                 </div>
 

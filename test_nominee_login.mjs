@@ -1,5 +1,5 @@
-import { initDatabase, getPool } from './src/lib/db.ts';
-import { handleBackendRequest } from './src/lib/estate-backend.ts';
+import { initDatabase, getPool } from "./src/lib/db.ts";
+import { handleBackendRequest } from "./src/lib/estate-backend.ts";
 
 async function testNomineeLogin() {
   process.env.MYSQL_HOST = "127.0.0.1";
@@ -16,7 +16,7 @@ async function testNomineeLogin() {
   const sendOtpReq = new Request("http://localhost:3000/api/nominee/send-otp", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ email })
+    body: JSON.stringify({ email }),
   });
 
   const sendOtpRes = await handleBackendRequest(sendOtpReq);
@@ -30,7 +30,7 @@ async function testNomineeLogin() {
   const loginOtpReq = new Request("http://localhost:3000/api/nominee/login", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ email, otp: otpCode })
+    body: JSON.stringify({ email, otp: otpCode }),
   });
 
   const loginOtpRes = await handleBackendRequest(loginOtpReq);

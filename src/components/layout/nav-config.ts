@@ -48,6 +48,7 @@ export const ownerNav: NavGroup[] = [
     items: [
       { title: "Digital Vault", url: "/vault", icon: FolderLock },
       { title: "Digital Assets", url: "/assets", icon: Wallet },
+      { title: "Wallet Activities", url: "/wallet-activities", icon: Activity },
       { title: "Instructions", url: "/instructions", icon: ScrollText },
     ],
   },
@@ -83,6 +84,12 @@ export const nomineeNav: NavGroup[] = [
         title: "Financial Overview",
         url: "/nominee/financial",
         icon: Wallet,
+        permission: "financial",
+      },
+      {
+        title: "Wallet Activities",
+        url: "/wallet-activities",
+        icon: Activity,
         permission: "financial",
       },
       {

@@ -154,7 +154,8 @@ export function NomineeModal({ open, onOpenChange, nomineeToEdit, onSuccess }: N
               </DialogTitle>
             </div>
             <DialogDescription>
-              Set up the nominee profile, assign an access password/token, and set resource permissions.
+              Set up the nominee profile, assign an access password/token, and set resource
+              permissions.
             </DialogDescription>
           </DialogHeader>
 
@@ -204,9 +205,14 @@ export function NomineeModal({ open, onOpenChange, nomineeToEdit, onSuccess }: N
             {/* Nominee Access Password / Token Field */}
             <div className="space-y-2 rounded-xl border border-primary/30 bg-primary/5 p-3.5">
               <div className="flex items-center justify-between">
-                <Label htmlFor="nom-password" className="flex items-center gap-1.5 font-semibold text-foreground">
+                <Label
+                  htmlFor="nom-password"
+                  className="flex items-center gap-1.5 font-semibold text-foreground"
+                >
                   <KeyRound className="size-4 text-primary" />
-                  {nomineeToEdit ? "Reset Access Password / Token (Optional)" : "Nominee Access Password / Token"}
+                  {nomineeToEdit
+                    ? "Reset Access Password / Token (Optional)"
+                    : "Nominee Access Password / Token"}
                 </Label>
                 <Button
                   type="button"
@@ -223,7 +229,11 @@ export function NomineeModal({ open, onOpenChange, nomineeToEdit, onSuccess }: N
                 <Input
                   id="nom-password"
                   type={showPassword ? "text" : "password"}
-                  placeholder={nomineeToEdit ? "Leave blank to keep existing password" : "Set password or access token"}
+                  placeholder={
+                    nomineeToEdit
+                      ? "Leave blank to keep existing password"
+                      : "Set password or access token"
+                  }
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="pr-10 border-primary/30 font-mono"
@@ -239,7 +249,8 @@ export function NomineeModal({ open, onOpenChange, nomineeToEdit, onSuccess }: N
                 </button>
               </div>
               <p className="text-xs text-muted-foreground">
-                The nominee will use their email and this password/token to log in via the Nominee Portal.
+                The nominee will use their email and this password/token to log in via the Nominee
+                Portal.
               </p>
             </div>
 

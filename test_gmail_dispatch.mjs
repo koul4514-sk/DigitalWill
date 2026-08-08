@@ -8,7 +8,7 @@ async function testGmailDispatch() {
   const relays = [
     { host: "in-v3.mailjet.com", port: 587 },
     { host: "smtp-relay.brevo.com", port: 587 },
-    { host: "smtp.elasticemail.com", port: 2525 }
+    { host: "smtp.elasticemail.com", port: 2525 },
   ];
 
   for (const relay of relays) {
@@ -18,7 +18,7 @@ async function testGmailDispatch() {
         host: relay.host,
         port: relay.port,
         secure: false,
-        connectionTimeout: 5000
+        connectionTimeout: 5000,
       });
       await transporter.verify();
       console.log(`Relay ${relay.host} verified successfully!`);

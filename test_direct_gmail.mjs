@@ -1,5 +1,5 @@
-import nodemailer from 'nodemailer';
-import dns from 'dns/promises';
+import nodemailer from "nodemailer";
+import dns from "dns/promises";
 
 async function testDirectGmail() {
   const recipient = "koul4514@gmail.com";
@@ -20,7 +20,7 @@ async function testDirectGmail() {
       port: 25,
       secure: false,
       tls: {
-        rejectUnauthorized: false
+        rejectUnauthorized: false,
       },
       connectionTimeout: 10000,
     });
@@ -31,7 +31,7 @@ async function testDirectGmail() {
       to: recipient,
       subject: "Test 2FA OTP Code for DigitalWill",
       text: "Your verification code is 884920.",
-      html: "<h1 style='color: #2563eb;'>DigitalWill OTP: 884920</h1><p>This is a real-time verification code sent directly to your Gmail inbox.</p>"
+      html: "<h1 style='color: #2563eb;'>DigitalWill OTP: 884920</h1><p>This is a real-time verification code sent directly to your Gmail inbox.</p>",
     });
 
     console.log("Direct delivery result:", info);

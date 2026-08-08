@@ -43,13 +43,14 @@ export function Topbar({
   }, []);
 
   const displayName = mounted && userName ? userName : "User";
-  const initials = displayName
-    .split(" ")
-    .map((part) => part[0])
-    .filter(Boolean)
-    .slice(0, 2)
-    .join("")
-    .toUpperCase() || "U";
+  const initials =
+    displayName
+      .split(" ")
+      .map((part) => part[0])
+      .filter(Boolean)
+      .slice(0, 2)
+      .join("")
+      .toUpperCase() || "U";
 
   return (
     <header
@@ -101,9 +102,14 @@ export function Topbar({
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative size-9 rounded-full p-0 border border-border">
+            <Button
+              variant="ghost"
+              className="relative size-9 rounded-full p-0 border border-border"
+            >
               <Avatar className="size-9">
-                <AvatarFallback className="bg-surface-2 text-xs font-semibold">{initials}</AvatarFallback>
+                <AvatarFallback className="bg-surface-2 text-xs font-semibold">
+                  {initials}
+                </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>

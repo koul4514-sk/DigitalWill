@@ -11,13 +11,21 @@ export interface SendOtpEmailResult {
 export async function sendOtpVerificationEmail(
   toEmail: string,
   nomineeName: string,
-  otpCode: string
+  otpCode: string,
 ): Promise<SendOtpEmailResult> {
   const gmailUser = process.env.GMAIL_USER || process.env.SMTP_USER || process.env.EMAIL_USER;
-  const gmailPass = process.env.GMAIL_PASS || process.env.GMAIL_APP_PASSWORD || process.env.SMTP_PASS || process.env.EMAIL_PASS;
+  const gmailPass =
+    process.env.GMAIL_PASS ||
+    process.env.GMAIL_APP_PASSWORD ||
+    process.env.SMTP_PASS ||
+    process.env.EMAIL_PASS;
   const host = process.env.SMTP_HOST || "smtp.gmail.com";
   const port = Number(process.env.SMTP_PORT || 465);
-  const from = process.env.EMAIL_FROM || (gmailUser ? `"DigitalWill" <${gmailUser}>` : `"DigitalWill Security" <no-reply@digitalwill.ai>`);
+  const from =
+    process.env.EMAIL_FROM ||
+    (gmailUser
+      ? `"DigitalWill" <${gmailUser}>`
+      : `"DigitalWill Security" <no-reply@digitalwill.ai>`);
 
   const htmlBody = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #e2e8f0; border-radius: 16px; background-color: #ffffff;">
@@ -63,7 +71,7 @@ export async function sendOtpVerificationEmail(
       const resendRes = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
+          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -111,7 +119,9 @@ export async function sendOtpVerificationEmail(
         html: htmlBody,
       });
 
-      console.log(`✅ [GMAIL SMTP DELIVERED DIRECTLY TO INBOX] Real email sent to ${toEmail}. Message ID: ${info.messageId}`);
+      console.log(
+        `✅ [GMAIL SMTP DELIVERED DIRECTLY TO INBOX] Real email sent to ${toEmail}. Message ID: ${info.messageId}`,
+      );
       return {
         success: true,
         message: `Real verification email sent to ${toEmail}`,

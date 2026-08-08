@@ -18,6 +18,7 @@ import { Route as NomineesRouteImport } from './routes/nominees'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as VaultRouteImport } from './routes/vault'
+import { Route as WalletActivitiesRouteImport } from './routes/wallet-activities'
 import { Route as NomineeAccessRouteImport } from './routes/nominee/access'
 import { Route as NomineeChecklistRouteImport } from './routes/nominee/checklist'
 import { Route as NomineeDashboardRouteImport } from './routes/nominee/dashboard'
@@ -71,6 +72,11 @@ const SignupRoute = SignupRouteImport.update({
 const VaultRoute = VaultRouteImport.update({
   id: '/vault',
   path: '/vault',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WalletActivitiesRoute = WalletActivitiesRouteImport.update({
+  id: '/wallet-activities',
+  path: '/wallet-activities',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NomineeAccessRoute = NomineeAccessRouteImport.update({
@@ -129,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/vault': typeof VaultRoute
+  '/wallet-activities': typeof WalletActivitiesRoute
   '/nominee/access': typeof NomineeAccessRoute
   '/nominee/checklist': typeof NomineeChecklistRoute
   '/nominee/dashboard': typeof NomineeDashboardRoute
@@ -149,6 +156,7 @@ export interface FileRoutesByTo {
   '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/vault': typeof VaultRoute
+  '/wallet-activities': typeof WalletActivitiesRoute
   '/nominee/access': typeof NomineeAccessRoute
   '/nominee/checklist': typeof NomineeChecklistRoute
   '/nominee/dashboard': typeof NomineeDashboardRoute
@@ -170,6 +178,7 @@ export interface FileRoutesById {
   '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/vault': typeof VaultRoute
+  '/wallet-activities': typeof WalletActivitiesRoute
   '/nominee/access': typeof NomineeAccessRoute
   '/nominee/checklist': typeof NomineeChecklistRoute
   '/nominee/dashboard': typeof NomineeDashboardRoute
@@ -192,6 +201,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/signup'
     | '/vault'
+    | '/wallet-activities'
     | '/nominee/access'
     | '/nominee/checklist'
     | '/nominee/dashboard'
@@ -212,6 +222,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/signup'
     | '/vault'
+    | '/wallet-activities'
     | '/nominee/access'
     | '/nominee/checklist'
     | '/nominee/dashboard'
@@ -232,6 +243,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/signup'
     | '/vault'
+    | '/wallet-activities'
     | '/nominee/access'
     | '/nominee/checklist'
     | '/nominee/dashboard'
@@ -253,6 +265,7 @@ export interface RootRouteChildren {
   SettingsRoute: typeof SettingsRoute
   SignupRoute: typeof SignupRoute
   VaultRoute: typeof VaultRoute
+  WalletActivitiesRoute: typeof WalletActivitiesRoute
   NomineeAccessRoute: typeof NomineeAccessRoute
   NomineeChecklistRoute: typeof NomineeChecklistRoute
   NomineeDashboardRoute: typeof NomineeDashboardRoute
@@ -327,6 +340,13 @@ declare module '@tanstack/react-router' {
       path: '/vault'
       fullPath: '/vault'
       preLoaderRoute: typeof VaultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wallet-activities': {
+      id: '/wallet-activities'
+      path: '/wallet-activities'
+      fullPath: '/wallet-activities'
+      preLoaderRoute: typeof WalletActivitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nominee/access': {
@@ -405,6 +425,7 @@ const rootRouteChildren: RootRouteChildren = {
   SettingsRoute: SettingsRoute,
   SignupRoute: SignupRoute,
   VaultRoute: VaultRoute,
+  WalletActivitiesRoute: WalletActivitiesRoute,
   NomineeAccessRoute: NomineeAccessRoute,
   NomineeChecklistRoute: NomineeChecklistRoute,
   NomineeDashboardRoute: NomineeDashboardRoute,
