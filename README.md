@@ -157,64 +157,6 @@ The dependency configuration in the current repository confirms the React 19, Ty
 
 The application is structured as a modular web application with reusable UI components, routing, state/data management, validation, and backend/service integrations.
 
-High-level architecture:
-
-┌──────────────────────────────────────┐
-│              Frontend                │
-│                                      │
-│ React + TypeScript + Vite            │
-│ TanStack Router + React Query        │
-│ Tailwind CSS + Radix UI              │
-└──────────────────┬───────────────────┘
-                   │
-                   │ API / Service Layer
-                   ▼
-┌──────────────────────────────────────┐
-│             Application              │
-│                                      │
-│ Authentication                       │
-│ Authorization / Permissions           │
-│ Validation                           │
-│ Document Management                  │
-│ Digital Assets                       │
-│ Nominee Management                   │
-│ Digital Instructions                 │
-└──────────────────┬───────────────────┘
-                   │
-                   ▼
-┌──────────────────────────────────────┐
-│             Data Layer               │
-│                                      │
-│ MySQL                                │
-│ File / Document Storage              │
-│ Email Services                       │
-│ Audit / Activity Data                │
-└──────────────────────────────────────┘
-📁 Project Structure
-DigitalWill/
-│
-├── public/
-│
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── layouts/
-│   ├── hooks/
-│   ├── context/
-│   ├── services/
-│   ├── utils/
-│   ├── assets/
-│   └── styles/
-│
-├── .lovable/
-├── package.json
-├── package-lock.json
-├── vite.config.ts
-├── tsconfig.json
-├── eslint.config.js
-├── components.json
-└── README.md
-🚀 Getting Started
 Prerequisites
 
 Make sure you have installed:
